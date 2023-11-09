@@ -40,10 +40,7 @@ public class Passenger {
                      double height, String nationality, String occupation, boolean specialNeeds,
                      String passportNumber, LocalDate issueDate, LocalDate expirationDate, int visaType) {
         this(name, birthday, address, phoneNumber, height, nationality, specialNeeds, occupation);
-        // setPassportNumber(passportNumber);
-        // setIssueDate(issueDate);
-        // setExpirationDate(expirationDate);
-        // setVisaType(visaType);
+        Passport passport = new Passport(passportNumber, issueDate, expirationDate, visaType);
     }
 
     //setters & getters

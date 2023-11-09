@@ -28,4 +28,31 @@ public class Passport {
         return passportNumber;
     }
 
+    private void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
+    }
+
+    public LocalDate getIssueDate() {
+        return issueDate;
+    }
+
+    private void setIssueDate(LocalDate issueDate) {
+        this.issueDate = issueDate;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    private void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public int getVisaType() {
+        return visaType;
+    }
+
+    private void setVisaType(int visaType) {
+        this.visaType = visaType;
+    }
 }
