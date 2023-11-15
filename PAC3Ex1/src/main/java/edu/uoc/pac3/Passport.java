@@ -25,6 +25,9 @@ public class Passport {
 
     public Passport(String passportNumber, LocalDate issueDate, LocalDate expirationDate, int visaType) {
         setPassportNumber(passportNumber);
+        setIssueDate(issueDate);
+        setExpirationDate(expirationDate);
+        setVisaType(visaType);
     }
 
     // methods

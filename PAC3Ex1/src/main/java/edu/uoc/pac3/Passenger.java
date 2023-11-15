@@ -26,22 +26,22 @@ public class Passenger {
 
     // constructors
     public Passenger(String name, LocalDate birthday, String address, String phoneNumber,
-                     double height, String nationality, boolean specialNeeds, String occupation) {
+                     double height, boolean specialNeeds, String occupation, String nationality) {
         setName(name);
         setBirthday(birthday);
         setAddress(address);
         setPhoneNumber(phoneNumber);
-        this.height = height;
-        this.nationality = nationality;
-        this.specialNeeds = specialNeeds;
-        this.occupation = occupation;
+        setHeight(height);
+        setNationality(nationality);
+        setSpecialNeeds(specialNeeds);
+       setOccupation(occupation);
         this.passport = null;
     }
 
     public Passenger(String name, LocalDate birthday, String address, String phoneNumber,
-                     double height, String nationality, String occupation, boolean specialNeeds,
+                     double height, boolean specialNeeds, String occupation, String nationality,
                      String passportNumber, LocalDate issueDate, LocalDate expirationDate, int visaType) {
-        this(name, birthday, address, phoneNumber, height, nationality, specialNeeds, occupation);
+        this(name, birthday, address, phoneNumber, height, specialNeeds, occupation, nationality);
         setPassport(passportNumber, issueDate, expirationDate, visaType);
     }
 
@@ -106,7 +106,7 @@ public class Passenger {
         // regex code
         String phoneRegex = "^\\+\\d{1,3}-\\d{1,12}$";
 
-        if (phoneNumber == null || !phoneNumber.matches(phoneRegex) ) {
+        if (phoneNumber == null || !phoneNumber.matches(phoneRegex)) {
             throw new IllegalArgumentException(INVALID_PHONE_NUMBER_FORMAT);
         }
 
@@ -118,6 +118,10 @@ public class Passenger {
     }
 
     public void setNationality(String nationality) throws IllegalArgumentException {
+        if (nationality == null || nationality.isEmpty()) {
+            throw new IllegalArgumentException(INVALID_NATIONALITY);
+        }
+
         this.nationality = nationality;
     }
 
@@ -126,10 +130,14 @@ public class Passenger {
     }
 
     public void setHeight(double height) throws IllegalArgumentException {
+        if (height < 50 || height > 250) {
+            throw new IllegalArgumentException(INVALID_HEIGHT);
+        }
+
         this.height = height;
     }
 
-    public boolean isSpecialNeeds() {
+    public boolean hasSpecialNeeds() {
         return specialNeeds;
     }
 
@@ -141,7 +149,11 @@ public class Passenger {
         return occupation;
     }
 
-    public void setOccupation(String occupation) {
+    public void setOccupation(String occupation) throws IllegalArgumentException {
+        if (occupation == null || occupation.isEmpty()) {
+            throw new IllegalArgumentException(INVALID_OCCUPATION);
+        }
+
         this.occupation = occupation;
     }
 
