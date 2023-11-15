@@ -34,7 +34,7 @@ public class Passenger {
         setHeight(height);
         setNationality(nationality);
         setSpecialNeeds(specialNeeds);
-       setOccupation(occupation);
+        setOccupation(occupation);
         this.passport = null;
     }
 

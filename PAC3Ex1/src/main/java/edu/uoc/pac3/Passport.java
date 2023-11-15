@@ -2,7 +2,6 @@ package edu.uoc.pac3;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Locale;
 
 public class Passport {
     public static final String PASSPORT_NUMBER_ERROR = "Passport number cannot be null or empty.";
@@ -14,14 +13,6 @@ public class Passport {
     private LocalDate issueDate;
     private LocalDate expirationDate;
     private int visaType;
-
-    public Passport() {
-        // TODO: buscar numeros pasaport
-        passportNumber = "\0";
-        issueDate = LocalDate.of(2022, 12, 1);
-        expirationDate = LocalDate.of(2022, 12, 1);
-        visaType = 1;
-    }
 
     public Passport(String passportNumber, LocalDate issueDate, LocalDate expirationDate, int visaType) {
         setPassportNumber(passportNumber);
@@ -37,7 +28,7 @@ public class Passport {
     }
 
     private void setPassportNumber(String passportNumber) throws IllegalArgumentException {
-        if (passportNumber == null || passportNumber.isEmpty()) {
+        if (passportNumber == null || passportNumber.isEmpty() || passportNumber.startsWith(" ")) {
             throw new IllegalArgumentException(PASSPORT_NUMBER_ERROR);
         }
 
@@ -77,11 +68,13 @@ public class Passport {
         // int anys = avui.getYear() - tina.getYear();
         // es podria calcular aixi també però he utilitzat Perdio que ho calcula automàticament,
         // en el cas que fossin dies entre anys seria molt més fàcil utilitzantl-ho.
-        Period periode = Period.between(issueDate, expirationDate);
-        int anys = periode.getYears();
-        if (anys >= 10 || expirationDate.isBefore(issueDate)) {
+        Period period = Period.between(issueDate, expirationDate);
+        int anys = period.getYears();
+
+        if (anys > 10 || expirationDate.isBefore(issueDate)) {
             throw new IllegalArgumentException(EXPIRATION_DATE_ERROR);
         }
+
         this.expirationDate = expirationDate;
     }
 
