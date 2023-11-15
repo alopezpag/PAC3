@@ -59,7 +59,7 @@ public class Passenger {
     }
 
     public void setName(String name) throws IllegalArgumentException {
-        if (name == null || name.isEmpty() || name.length() > NAME_MAX_LENGTH) {
+        if (name == null || name.isEmpty() || name.length() > NAME_MAX_LENGTH || name.startsWith(" ")) {
             throw new IllegalArgumentException(INVALID_NAME);
         }
 
@@ -91,7 +91,7 @@ public class Passenger {
     }
 
     public void setAddress(String address) throws IllegalArgumentException {
-        if (address == null || address.isEmpty()) {
+        if (address == null || address.isEmpty() || address.startsWith(" ")) {
             throw new IllegalArgumentException(INVALID_ADDRESS);
         }
 
@@ -118,7 +118,7 @@ public class Passenger {
     }
 
     public void setNationality(String nationality) throws IllegalArgumentException {
-        if (nationality == null || nationality.isEmpty()) {
+        if (nationality == null || nationality.isEmpty() || nationality.startsWith(" ")) {
             throw new IllegalArgumentException(INVALID_NATIONALITY);
         }
 
@@ -150,7 +150,7 @@ public class Passenger {
     }
 
     public void setOccupation(String occupation) throws IllegalArgumentException {
-        if (occupation == null || occupation.isEmpty()) {
+        if (occupation == null || occupation.isEmpty() || occupation.startsWith(" ")) {
             throw new IllegalArgumentException(INVALID_OCCUPATION);
         }
 
