@@ -13,6 +13,8 @@ public class Passenger {
     public static final String INVALID_NATIONALITY = "Nationality cannot be null or empty.";
     public static final int NAME_MAX_LENGTH = 50;
 
+
+
     // variables
     private String name;
     private LocalDate birthday;
