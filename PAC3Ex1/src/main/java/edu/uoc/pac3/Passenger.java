@@ -3,6 +3,7 @@ package edu.uoc.pac3;
 import java.time.LocalDate;
 
 public class Passenger {
+
     // constants
     public static final String INVALID_NAME = "Name cannot be null, empty or exceed the maximum number of characters.";
     public static final String INVALID_BIRTHDAY = "Invalid birthday.";
