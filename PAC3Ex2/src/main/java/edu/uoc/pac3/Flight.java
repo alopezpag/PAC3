@@ -115,12 +115,30 @@ public class Flight {
     }
 
     //TODO: fer
-    public boolean addPassenger(Passenger p) {
-
+    public boolean addPassenger(Passenger p) throws IllegalArgumentException, NullPointerException, IllegalStateException {
+        if (p == null) throw new NullPointerException(ERROR_NO_PASSPORT);
+        if (p.getPassport() == null) throw new NullPointerException(ERROR_NO_PASSPORT);
+        if (containsPassenger(p)) throw new IllegalStateException(ERROR_PASSENGER_ALREADY_IN_FLIGHT);
+        for (int pos = 0; pos < passengers.length; pos++) {
+            if (passengers[pos] == null) {
+                passengers[pos] = p;
+                return true;
+            }
+        }
+        return false;
     }
 
-    public boolean removePassengers(Passenger p) {
+    public boolean removePassenger(Passenger p) {
+        if (p == null) throw new NullPointerException(ERROR_NO_PASSPORT);
+        if (p.getPassport() == null) throw new NullPointerException(ERROR_NO_PASSPORT);
 
+        int index = findPassenger(p);
+        if (index != -1) {
+            passengers[index] = null;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //TODO: dubte -> el findPassenger() ja fa la comprovació de ERROR_NO_PASSPORT, realment està duplicada al mètode.
@@ -145,7 +163,13 @@ public class Flight {
         }
     }
 
-    public int getNumPassenger() {
-
+    public int getNumPassengers() {
+        int count = 0;
+        for (Passenger passenger : passengers) {
+            if (passenger != null) {
+                count++;
+            }
+        }
+        return count;
     }
 }
