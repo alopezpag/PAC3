@@ -12,7 +12,7 @@ public class Passenger {
     public static final String INVALID_HEIGHT = "Height must be between 50 and 250 cm.";
     public static final String INVALID_OCCUPATION = "Occupation cannot be null or empty.";
     public static final String INVALID_NATIONALITY = "Nationality cannot be null or empty.";
-    public static final int NAME_MAX_LENGTH = 50;
+    private static final int NAME_MAX_LENGTH = 50;
 
 
 
