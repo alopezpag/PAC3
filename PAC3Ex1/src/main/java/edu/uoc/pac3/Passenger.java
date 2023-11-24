@@ -15,7 +15,6 @@ public class Passenger {
     private static final int NAME_MAX_LENGTH = 50;
 
 
-
     // variables
     private String name;
     private LocalDate birthday;
